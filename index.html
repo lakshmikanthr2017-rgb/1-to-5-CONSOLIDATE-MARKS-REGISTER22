@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consolidated Marks Register Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- SheetJS CDN for parsing uploaded Excel files -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="portal-header">
+        <div class="header-container">
+            <div class="logo-box">🏫</div>
+            <div class="header-text">
+                <h1>GOVERNMENT PRIMARY SCHOOL</h1>
+                <h2>1 TO 5TH CONSOLIDATED MARKS REGISTER & ADMISSION TICKET PORTAL</h2>
+                <p>ACADEMIC YEAR 2026-2027</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Portal Controls -->
+    <main class="main-container">
+
+        <!-- File Upload & Action Bar -->
+        <div class="control-panel no-print">
+            <div class="file-upload-box">
+                <label for="excelFileInput" class="file-label">📂 Upload Excel Register (.xlsx):</label>
+                <input type="file" id="excelFileInput" accept=".xlsx, .xls" onchange="handleFileUpload(event)">
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="studentSearch" placeholder="Search Roll No or Student Name..." onkeyup="filterStudents()">
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-add" onclick="addNewStudent()">➕ Add Manual Student</button>
+                <button class="btn btn-print" onclick="window.print()">🖨️ Print A3 Landscape</button>
+            </div>
+        </div>
+
+        <!-- Instructions Banner -->
+        <div class="notice-banner no-print">
+            📌 <strong>Notice:</strong> You can upload your Excel register file above or manually fill/edit marks below. All totals, grades, percentages, and results calculate automatically!
+        </div>
+
+        <!-- Student Data Register Table -->
+        <div class="table-wrapper">
+            <table id="registerTable">
+                <thead>
+                    <tr>
+                        <th rowspan="2">S.NO</th>
+                        <th rowspan="2">STUDENT NAME</th>
+                        <th rowspan="2">PRESENT DAYS</th>
+                        <th rowspan="2">TOTAL DAYS</th>
+                        <th rowspan="2">SEM</th>
+                        <th rowspan="2">EXAM</th>
+                        <th rowspan="2">WEIGHT</th>
+                        <th colspan="2">KANNADA</th>
+                        <th colspan="2">ENGLISH</th>
+                        <th colspan="2">MATHEMATICS</th>
+                        <th colspan="2">EVS</th>
+                        <th rowspan="2">TOTAL</th>
+                        <th rowspan="2">PERCENT (%)</th>
+                        <th rowspan="2">GRADE</th>
+                        <th rowspan="2">RESULT</th>
+                    </tr>
+                    <tr>
+                        <th>MARKS</th><th>GRADE</th>
+                        <th>MARKS</th><th>GRADE</th>
+                        <th>MARKS</th><th>GRADE</th>
+                        <th>MARKS</th><th>GRADE</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTableBody">
+                    <!-- Dynamic Rows Rendered Here -->
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <!-- Footer Attribution -->
+    <footer class="portal-footer">
+        <div class="footer-content">
+            <p class="designer">Designed by : LAKSHMIKANTH R (Mob: 9844444871)</p>
+            <p class="copyright">© 2026 Government Primary School. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
